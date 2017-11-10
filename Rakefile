@@ -2,7 +2,7 @@ task :default => "install"
 
 namespace "configs" do
 
-  IGNORE = %w(Rakefile README.md Tomorrow-Night.vim bin)
+  IGNORE = %w(Rakefile README.md Tomorrow-Night.vim bin nvim)
 
   desc "symlink files into home directory"
   task :install do
@@ -17,7 +17,7 @@ namespace "configs" do
       next if IGNORE.include?(filename)
 
       if File.exist?(old_dotfile)
-        File.rename(old_dotfile, "#{old_dotfile}.jd.bak")
+        File.rename(old_dotfile, "#{old_dotfile}.ash.bak")
       end
 
       sym_link = File.join(working_dir,"#{filename}")
@@ -28,6 +28,8 @@ namespace "configs" do
     colors_folder = File.expand_path("~/.vim/colors")
     mkdir_p(colors_folder) unless File.exist?(colors_folder)
     copy("Tomorrow-Night.vim", colors_folder)
+
+    ln_s File.join(working_dir,"nvim"), File.join(home_dir,".config/nvim")
   end
 
   desc "remove symlinks, add old files"
@@ -44,10 +46,18 @@ namespace "configs" do
 
       rm_rf(dotfile) if File.symlink?(dotfile) || File.exist?(dotfile)
 
-      old_dotfile = File.join(home_dir,".#{filename}.jd.bak")
+      old_dotfile = File.join(home_dir,".#{filename}.ash.bak")
       if File.exist?(old_dotfile)
         File.rename(old_dotfile,dotfile)
       end
+    end
+
+    nvim_folder = File.join(home_dir,".config/nvim")
+    rm_rf(nvim_folder) if File.symlink?(nvim_folder) || File.exist?(nvim_folder)
+
+    old_nvim_folder = File.join(home_dir,"nvim.ash.bak")
+    if File.exist?(old_nvim_folder)
+      FileUtils.mv(old_nvim_folder,nvim_folder)
     end
   end
 end

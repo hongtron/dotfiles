@@ -61,47 +61,8 @@ namespace "configs" do
 end
 
 namespace "plugins" do
-  PLUGIN_REPOSITORIES = {
-    "Vundler" => {
-      :type => :git,
-      :uri => "https://github.com/VundleVim/Vundle.vim.git",
-      :install_dir => "~/.vim/bundle/Vundle.vim",
-      :commands => {
-        :post_install => ["vim +PluginInstall +qall"]
-      }
-    }
-  }
-
-  desc "install prereqs"
-  task :install  do
-    PLUGIN_REPOSITORIES.each do |name, config|
-      puts "Installing #{name}"
-
-      if config[:type] == :git && config[:install_dir]
-        install_dir = File.expand_path(config[:install_dir])
-        parent_dir = File.dirname(install_dir)
-
-        rm_rf(File.expand_path(install_dir))
-        mkdir_p(parent_dir) unless File.exist?(parent_dir)
-
-        system("git clone #{config[:uri]} #{install_dir}")
-      end
-
-      if config[:commands] && config[:commands][:post_install]
-        config[:commands][:post_install].each { |command| system(command) }
-      end
-    end
-  end
-
-  desc "remove prereqs"
-  task :uninstall do
-    PLUGIN_REPOSITORIES.each do |name, config|
-      puts "Uninstalling #{name}"
-      if config[:type] == :git
-        install_dir = File.expand_path(config[:install_dir])
-        rm_rf(install_dir) if config[:install_dir] && File.directory?(install_dir)
-      end
-    end
+  task :install do
+    puts %x[nvim +PlugInstall +qall]
   end
 end
 
@@ -136,6 +97,6 @@ namespace "scripts" do
   end
 end
 
-task :install => ["scripts:install","configs:install", "plugins:install"]
-task :uninstall => ["plugins:uninstall", "configs:uninstall", "scripts:uninstall"]
+task :install => ["scripts:install", "configs:install", "plugins:install"]
+task :uninstall => ["configs:uninstall", "scripts:uninstall"]
 task "all:install" => [:install]

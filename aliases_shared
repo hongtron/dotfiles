@@ -51,12 +51,20 @@ tmux_list () {
   ps -o ruser,command -ax | grep '[n]ew-session -s' | ruby -ne '$_ =~ /^(\w+).*-s (\w+)/; puts "#{$1} started #{$2}"'
 }
 
+current_project_name() {
+  if [ -n "$1" ]; then
+    project=$1
+  else
+    project=${PWD##*/}
+  fi
+  echo $project
+}
 container_ip () {
-  docker ps | grep $1 | awk '{print $1}' | xargs docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
+  docker ps | grep `current_project_name $1` | awk '{print $1}' | xargs docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
 }
 
 run_rails_image () {
-  docker run -it --rm -p 3000:3000 $1
+  docker run -it --rm -p 3000:3000 `current_project_name $1`
 }
 
 alias tmux-start='tmux_start'

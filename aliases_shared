@@ -51,12 +51,17 @@ tmux_list () {
   ps -o ruser,command -ax | grep '[n]ew-session -s' | ruby -ne '$_ =~ /^(\w+).*-s (\w+)/; puts "#{$1} started #{$2}"'
 }
 
+container_ip () {
+  docker ps | grep $1 | awk '{print $1}' | xargs docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
+}
+
 alias tmux-start='tmux_start'
 alias tmuxs='tmux_start'
 alias tmux-list='tmux_list'
 alias tmuxl='tmux_list'
 alias tmux-public='tmux_public'
 alias tmuxpub='tmux_public'
+alias container-ip='container_ip'
 
 alias bmux-start="echo 'DEPRECATED: SWITCH TO tmux-start' && tmux_start"
 alias bmuxs="echo 'DEPRECATED: SWITCH TO tmuxs' && tmux_start"

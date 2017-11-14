@@ -55,6 +55,10 @@ container_ip () {
   docker ps | grep $1 | awk '{print $1}' | xargs docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
 }
 
+run_rails_image () {
+  docker run -it --rm -p 3000:3000 $1
+}
+
 alias tmux-start='tmux_start'
 alias tmuxs='tmux_start'
 alias tmux-list='tmux_list'
@@ -62,6 +66,7 @@ alias tmuxl='tmux_list'
 alias tmux-public='tmux_public'
 alias tmuxpub='tmux_public'
 alias container-ip='container_ip'
+alias run-rails-image='run_rails_image'
 
 alias bmux-start="echo 'DEPRECATED: SWITCH TO tmux-start' && tmux_start"
 alias bmuxs="echo 'DEPRECATED: SWITCH TO tmuxs' && tmux_start"

@@ -64,7 +64,13 @@ container_ip () {
 }
 
 run_rails_image () {
-  docker run -it --rm -p 3000:3000 `current_project_name $1`
+  current_project=`current_project_name`
+  if [ -n "$HOST_PROJECTS_DIR" ]; then
+    projects_dir=$HOST_PROJECTS_DIR
+  else
+    projects_dir=`echo ~/projects`
+  fi
+  docker run -it --rm -p 3000:3000 -v $projects_dir/$current_project:/$current_project $current_project $1
 }
 
 alias tmux-start='tmux_start'

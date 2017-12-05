@@ -1,0 +1,2 @@
+#!/bin/bash
+HOST_PROJECTS_DIR=`echo ~/projects` docker-compose -f ~/projects/vps-devenv/docker-compose.yml run --rm -v ~/.ssh:/root/.ssh:ro devenv

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ "$_system_name" == 'OSX' ]]; then
+  ssh_volume="-v `echo ~/.ssh`:/root/.ssh:ro"
+  docker_compose_path=`echo ~/projects/vps-devenv/docker-compose.yml`
+else
+  ssh_volume=""
+  docker_compose_path="/root/vps-devenv/docker-compose.yml"
+fi
+
+docker-compose -f $docker_compose_path run --rm $ssh_volume devenv

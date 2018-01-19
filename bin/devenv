@@ -8,4 +8,8 @@ else
   docker_compose_path="/root/vps-devenv/docker-compose.yml"
 fi
 
-docker-compose -f $docker_compose_path run --rm $ssh_volume devenv
+if [[ $* ]]; then
+  docker-compose -f $docker_compose_path run --rm $ssh_volume devenv /bin/bash -i -c "$*"
+else
+  docker-compose -f $docker_compose_path run --rm $ssh_volume devenv
+fi

@@ -8,6 +8,10 @@ else
   docker_compose_path="/root/vps-devenv/docker-compose.yml"
 fi
 
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+  export SSH_AUTH_SOCK=/dev/null
+fi
+
 if [[ $* ]]; then
   docker-compose -f $docker_compose_path run --rm $ssh_volume devenv /bin/bash -i -c "$*"
 else

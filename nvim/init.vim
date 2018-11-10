@@ -17,7 +17,7 @@ Plug 'junegunn/fzf', { 'tag': '0.16.8', 'dir': '~/.fzf', 'do': './install --bin'
 Plug 'junegunn/goyo.vim', {'tag': '1.6.0'}
 Plug 'pangloss/vim-javascript', {'tag': '1.2.5.1'}
 Plug 'rodjek/vim-puppet', {'commit': 'd881b93dc4a8ed1374ad44439aeeb47808a6b91a'}
-Plug 'rust-lang/rust.vim', {'commit': '732b5fcb3652f81726d5f0f5b97c9027c01f057a'}
+Plug 'rust-lang/rust.vim', {'commit': '7e1e2d259adb0c8c464cb6db6074c55f39fcfba7'}
 Plug 'scrooloose/nerdtree', {'tag': '5.0.0'}
 Plug 'tomtom/tcomment_vim', {'tag': '3.08'}
 Plug 'tpope/vim-endwise', {'commit': '0067ceda37725d01b7bd5bf249d63b1b5d4e2ab4', 'for': ['ruby']}

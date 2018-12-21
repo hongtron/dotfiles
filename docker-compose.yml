@@ -1,0 +1,15 @@
+version: '3'
+services:
+  devenv:
+    image: "hongtron/dev-env"
+    volumes:
+      - ${PWD}:${PWD}
+      - rvm:/root/.rvm
+      - ${SSH_AUTH_SOCK}:/ssh-agent
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp:/tmp
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
+    working_dir: ${PWD}
+volumes:
+  rvm:

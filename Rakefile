@@ -2,7 +2,7 @@ task :default => "install"
 
 namespace "configs" do
 
-  IGNORE = %w(Rakefile README.md Tomorrow-Night.vim bin nvim)
+  IGNORE = %w(Rakefile README.md Tomorrow-Night.vim bin nvim docker-compose.yml)
 
   desc "symlink files into home directory"
   task :install do
@@ -97,6 +97,21 @@ namespace "scripts" do
   end
 end
 
-task :install => ["scripts:install", "configs:install", "plugins:install"]
-task :uninstall => ["configs:uninstall", "scripts:uninstall"]
+namespace "docker_env" do
+  COMPOSE_LOCATION = File.join("/", "usr", "local", "etc", "docker-compose.yml")
+  task :install do
+    working_dir = File.expand_path(File.dirname(__FILE__))
+    compose_file = File.join(working_dir,"docker-compose.yml")
+    ln_s compose_file, COMPOSE_LOCATION
+  end
+
+  task :uninstall do
+    if File.symlink?(COMPOSE_LOCATION)
+      rm(COMPOSE_LOCATION)
+    end
+  end
+end
+
+task :install => ["scripts:install", "configs:install", "plugins:install", "docker_env:install"]
+task :uninstall => ["configs:uninstall", "scripts:uninstall", "docker_env:uninstall"]
 task "all:install" => [:install]

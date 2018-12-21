@@ -1,19 +1,12 @@
 #!/bin/bash
 
-if [[ "$_system_name" == 'OSX' ]]; then
-  ssh_volume="-v `echo ~/.ssh`:/root/.ssh:ro"
-  docker_compose_path=`echo ~/projects/vps-devenv/docker-compose.yml`
-else
-  ssh_volume=""
-  docker_compose_path="/root/vps-devenv/docker-compose.yml"
-fi
-
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-  export SSH_AUTH_SOCK=/dev/null
+if [[ "$PWD" == "$HOME" ]]; then
+  echo "Do not run devenv from home directory, as the container's dotfiles will be mounted over."
+  exit 1
 fi
 
 if [[ $* ]]; then
-  docker-compose -f $docker_compose_path run --rm $ssh_volume devenv /bin/bash -i -c "$*"
+  docker-compose -f /usr/local/etc/docker-compose.yml run --rm $ssh_volume devenv /bin/bash -i -c "$*"
 else
-  docker-compose -f $docker_compose_path run --rm $ssh_volume devenv
+  docker-compose -f /usr/local/etc/docker-compose.yml run --rm $ssh_volume devenv
 fi

@@ -56,6 +56,7 @@ set smartcase
 set textwidth=0 nosmartindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set wildignore+=*.pyc,*.o,*.class
 set wrap
+set noshowcmd
 
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 autocmd BufNewFile,BufReadPost *.go set filetype=go

@@ -17,7 +17,8 @@ Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
 Plug 'jlanzarotta/bufexplorer', { 'commit': 'f3bbe12664b08038912faac586f6c0b5104325c3' }
 Plug 'jtratner/vim-flavored-markdown'
-Plug 'junegunn/fzf', { 'tag': '0.16.8', 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'pangloss/vim-javascript', { 'commit': 'ce0f529bbb938b42f757aeedbe8f5d95f095b51d' }
 Plug 'pgr0ss/vim-github-url'
@@ -98,6 +99,15 @@ let $FZF_DEFAULT_COMMAND = 'find * -type f 2>/dev/null | grep -v -E "deps\/|_bui
 let $FZF_DEFAULT_OPTS = '--reverse'
 let g:fzf_layout = {'up': '~20%'}
 let g:fzf_tags_command = 'ctags -R --exclude=".git" --exclude="node_modules" --exclude="vendor" --exclude="log" --exclude="tmp" --exclude="db" --exclude="pkg" --exclude="deps" --exclude="_build" --extra=+f .'
+function! SmartFuzzy()
+  let root = split(system('git rev-parse --show-toplevel'), '\n')
+  if len(root) == 0 || v:shell_error
+    Files
+  else
+    GFiles -co --exclude-standard -- . ':!:vendor/*'
+  endif
+endfunction
+command! -nargs=* SmartFuzzy :call SmartFuzzy()
 
 " Vimux
 let g:VimuxUseNearestPane = 1
@@ -141,7 +151,7 @@ imap jj <C-C>
 map <silent> <LocalLeader>rt :!ctags -R --exclude=".git" --exclude="node_modules" --exclude="vendor" --exclude="log" --exclude="tmp" --exclude="db" --exclude="pkg" --exclude="deps" --exclude="_build" --extra=+f .<CR>
 map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
 map <silent> <LocalLeader>nf :NERDTreeFind<CR>
-map <silent> <leader>ff :Files<CR>
+map <silent> <leader>ff :SmartFuzzy<CR>
 map <silent> <leader>fg :GFiles<CR>
 map <silent> <leader>fb :Buffers<CR>
 map <silent> <leader>ft :Tags<CR>

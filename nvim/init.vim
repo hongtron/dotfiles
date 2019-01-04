@@ -35,6 +35,7 @@ Plug 'wlangstroth/vim-racket', {'commit': '6b62e5f50ea94aa41537fb8691abed8f30f4b
 Plug 'godlygeek/tabular', {'tag': '1.0.0'}
 Plug 'ekalinin/Dockerfile.vim', {'commit': 'c3e2568c0f09ffb5b84b3c16e1e366285afed31b'}
 Plug 'edkolev/tmuxline.vim', {'commit': '05c687014272abca548d72cfd5d8a7b7c3fb7e5e'}
+Plug 'pgr0ss/vim-github-url'
 
 call plug#end()
 

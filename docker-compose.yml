@@ -1,7 +1,7 @@
 version: '3'
 services:
   devenv:
-    image: "hongtron/dev-env"
+    image: "${IMAGE}:${TAG}"
     volumes:
       - ${PWD}:${PWD}
       - rvm:/root/.rvm

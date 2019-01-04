@@ -1,9 +1,45 @@
 #!/bin/bash
 
+set -eu -o pipefail
+
+export IMAGE="hongtron/dev-env"
+export TAG="latest"
+
+usage() {
+  cat <<EOF
+devenv [-i <image>] [-t <tag>] [COMMAND]
+Options
+  -i, --image     Specify docker image; defaults to "hongtron/dev-env"
+  -t, --tag       Specify docker image tag; defaults to "latest"
+EOF
+}
+
+
 if [[ "$PWD" == "$HOME" ]]; then
   echo "Do not run devenv from home directory, as the container's dotfiles will be mounted over."
   exit 1
 fi
+
+
+while [[ $# > 0 && $1 == -* ]]; do
+  case $1 in
+    -i|--image)
+      shift
+      export IMAGE=$1
+      ;;
+    -t|--tag)
+      shift
+      export TAG=$1
+      ;;
+    -h|--help)
+      usage
+      exit
+      ;;
+  esac
+
+  shift
+done
+
 
 if [[ $* ]]; then
   docker-compose -f /usr/local/etc/docker-compose.yml run --rm devenv /bin/bash -i -c "$*"

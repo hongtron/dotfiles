@@ -125,6 +125,13 @@ nnoremap <silent> <leader>rb :wa<CR>:TestFile<CR>
 nnoremap <silent> <leader>ra :wa<CR>:TestSuite<CR>
 nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
 
+function! Trim()
+  %s/\s*$//
+  ''
+endfunction
+command! -nargs=0 Trim :call Trim()
+nnoremap <silent> <Leader>cw :Trim<CR>
+
 imap <C-L> <SPACE>=><SPACE>
 imap <C-E>= <lt>%=  %><esc>hhi
 imap <C-E>- <lt>%  %><esc>hhi

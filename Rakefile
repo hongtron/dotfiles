@@ -98,7 +98,7 @@ namespace "scripts" do
 end
 
 namespace "docker_env" do
-  COMPOSE_LOCATION = File.join("/", "usr", "local", "etc", "docker-compose.yml")
+  COMPOSE_LOCATION = File.join("/", "usr", "local", "etc", "devenv", "docker-compose.yml")
   task :install do
     working_dir = File.expand_path(File.dirname(__FILE__))
     compose_file = File.join(working_dir,"docker-compose.yml")

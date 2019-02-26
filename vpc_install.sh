@@ -16,4 +16,4 @@ fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cp $DIR/bin/devenv /usr/local/bin
-cp $DIR/docker-compose.yml /usr/local/etc/docker-compose.yml
+cp $DIR/docker-compose.yml /usr/local/etc/devenv/docker-compose.yml

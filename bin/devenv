@@ -42,7 +42,7 @@ done
 
 
 if [[ $* ]]; then
-  docker-compose -f /usr/local/etc/docker-compose.yml run --rm devenv /bin/bash -i -c "$*"
+  docker-compose -f /usr/local/etc/devenv/docker-compose.yml run --rm devenv /bin/bash -i -c "$*"
 else
-  docker-compose -f /usr/local/etc/docker-compose.yml run --rm devenv
+  docker-compose -f /usr/local/etc/devenv/docker-compose.yml run --rm devenv
 fi

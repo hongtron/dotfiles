@@ -62,7 +62,7 @@ end
 
 namespace "plugins" do
   task :install do
-    puts %x[nvim +PlugInstall +qall]
+    puts %x[bash -i -c "nvim +PlugInstall +qall"]
   end
 end
 

@@ -62,7 +62,8 @@ end
 
 namespace "plugins" do
   task :install do
-    puts %x[bash -i -c "nvim +PlugInstall +qall"]
+    # "nvim" may be a function defined in aliases_shared (see dev-env Dockerfile)
+    puts %x[BASH_ENV=~/.aliases_shared bash -c "nvim +PlugInstall +qall"]
   end
 end
 

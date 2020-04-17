@@ -5,11 +5,11 @@ services:
     volumes:
       - ${PWD}:${PWD}
       - rvm:/root/.rvm
-      - ${SSH_AUTH_SOCK}:/ssh-agent
+      - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp:/tmp
     environment:
-      - SSH_AUTH_SOCK=/ssh-agent
+      - SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock
     working_dir: ${PWD}
 volumes:
   rvm:

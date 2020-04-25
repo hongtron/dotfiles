@@ -22,6 +22,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'pangloss/vim-javascript', { 'commit': 'ce0f529bbb938b42f757aeedbe8f5d95f095b51d' }
 Plug 'pgr0ss/vim-github-url'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
@@ -131,6 +135,18 @@ let g:go_highlight_trailing_whitespace_error = 0
 let g:ale_lint_on_text_changed = "normal"
 let g:ale_lint_on_insert_leave = 1
 let g:ale_linters = {'java': []}
+let g:ale_linters = {'rust': ['rls']}
+
+" vim-lsp
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
 
 nnoremap <silent> <leader>rf :wa<CR>:TestNearest<CR>
 nnoremap <silent> <leader>rb :wa<CR>:TestFile<CR>

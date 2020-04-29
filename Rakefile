@@ -25,9 +25,10 @@ namespace "configs" do
       ln_s sym_link, old_dotfile
     end
 
-    nvim_config_folder = File.expand_path("~/.config/nvim")
-    mkdir_p nvim_config_folder unless File.exist?(nvim_config_folder)
-    cp_r 'nvim/.', nvim_config_folder
+    dot_config_folder = File.expand_path("~/.config")
+    nvim_config_folder = File.join(dot_config_folder, "nvim")
+    mkdir_p dot_config_folder unless File.exist?(dot_config_folder)
+    ln_s File.join(working_dir, "nvim"), nvim_config_folder
   end
 
   desc "remove symlinks, add old files"

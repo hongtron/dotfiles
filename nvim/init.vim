@@ -9,9 +9,11 @@ Plug '~/.config/nvim/local-plugins/language-mappings'
 Plug 'benmills/vimux'
 Plug 'bkad/CamelCaseMotion'
 Plug 'cespare/vim-toml'
+Plug 'dansomething/coc-java-debug', {'do': 'yarn install --frozen-lockfile'}
 Plug 'edkolev/tmuxline.vim', {'commit': '05c687014272abca548d72cfd5d8a7b7c3fb7e5e'}
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elixir-lang/vim-elixir'
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
@@ -20,6 +22,11 @@ Plug 'jtratner/vim-flavored-markdown'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+" requires nodejs, neovim python package (pynvim)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript', { 'commit': 'ce0f529bbb938b42f757aeedbe8f5d95f095b51d' }
 Plug 'pgr0ss/vim-github-url'
 Plug 'rodjek/vim-puppet'
@@ -131,6 +138,11 @@ let g:go_highlight_trailing_whitespace_error = 0
 let g:ale_lint_on_text_changed = "normal"
 let g:ale_lint_on_insert_leave = 1
 let g:ale_linters = {'java': []}
+
+"coc
+let g:coc_start_at_startup = 0
+autocmd FileType java :CocStart
+autocmd FileType rust :CocStart
 
 nnoremap <silent> <leader>rf :wa<CR>:TestNearest<CR>
 nnoremap <silent> <leader>rb :wa<CR>:TestFile<CR>

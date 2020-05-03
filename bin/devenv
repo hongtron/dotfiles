@@ -41,6 +41,16 @@ while [[ $# > 0 && $1 == -* ]]; do
 done
 
 
+# https://github.com/docker/for-mac/issues/410
+unamestr=`uname`
+if [[ "$unamestr" == 'Darwin' ]]; then
+  export DEVENV_HOST_SSH_AUTH_SOCK="/run/host-services/ssh-auth.sock"
+  export DEVENV_CONTAINER_SSH_AUTH_SOCK="/run/host-services/ssh-auth.sock"
+else
+  export DEVENV_HOST_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
+  export DEVENV_CONTAINER_SSH_AUTH_SOCK="/ssh-agent"
+fi
+
 if [[ $* ]]; then
   docker-compose -f /usr/local/etc/devenv/docker-compose.yml run --rm devenv /bin/bash -i -c "$*"
 else

@@ -141,7 +141,5 @@ safepathprepend $HOME/.bin
 ## Local (LOCAL)
 safepathprepend $HOME/.bin.local
 
-# Common Tools
-safesource $HOME/.rvm/scripts/rvm
 
 safesource $HOME/.fzf.bash

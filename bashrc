@@ -37,11 +37,11 @@ fi
 platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
-  platform='linux'
+   platform='linux'
 elif [[ "$unamestr" == 'FreeBSD' ]]; then
-        platform='freebsd'
-else
-  platform='osx'
+   platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='osx'
 fi
 
 # If set, the pattern "**" used in a pathname expansion context will

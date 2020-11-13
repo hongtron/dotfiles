@@ -29,6 +29,7 @@ Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript', { 'commit': 'ce0f529bbb938b42f757aeedbe8f5d95f095b51d' }
 Plug 'pgr0ss/vim-github-url'
+Plug 'psf/black'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'

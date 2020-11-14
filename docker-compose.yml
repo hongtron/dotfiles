@@ -4,7 +4,7 @@ services:
     image: "${IMAGE}:${TAG}"
     volumes:
       - ${PWD}:${PWD}
-      - rvm:/root/.rvm
+      - scratch:/root/scratch
       - ${DEVENV_HOST_SSH_AUTH_SOCK}:${DEVENV_CONTAINER_SSH_AUTH_SOCK}
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp:/tmp
@@ -12,4 +12,4 @@ services:
       - SSH_AUTH_SOCK=${DEVENV_CONTAINER_SSH_AUTH_SOCK}
     working_dir: ${PWD}
 volumes:
-  rvm:
+  scratch:

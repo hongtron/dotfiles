@@ -86,3 +86,6 @@ alias tmuxpub='tmux_public'
 alias container-ip='container_ip'
 
 alias vim="nvim"
+
+alias gwip="git add . && git commit -am wip"
+alias gcan!="git commit --amend --no-edit"

@@ -38,7 +38,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/matchit.zip'
@@ -99,6 +101,12 @@ let g:rubycomplete_buffer_loading = 1
 let g:no_html_toolbar = 'yes'
 
 let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$']
+
+" fugitive
+"
+" automatically open quickfix menu after grep to see results
+autocmd QuickFixCmdPost *grep* cwindow
+map <silent> <leader>gw :Ggrep <cword><CR>
 
 " fzf
 let $FZF_DEFAULT_COMMAND = 'find * -type f 2>/dev/null | grep -v -E "deps\/|_build\/|node_modules\/|vendor\/|build_intellij\/"'

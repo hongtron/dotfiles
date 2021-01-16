@@ -148,9 +148,14 @@ let g:VimuxHeight = "40"
 let g:go_highlight_trailing_whitespace_error = 0
 
 " ale
+set omnifunc=ale#completion#OmniFunc
+autocmd CompleteDone * pclose " close the preview window after selecting completion
 let g:ale_lint_on_text_changed = "normal"
 let g:ale_lint_on_insert_leave = 1
 let g:ale_linters = {'java': []}
+nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
+nmap <silent> <leader>an <Plug>(ale_next_wrap)
+nmap <silent> <leader>gd :ALEGoToDefinition<CR>
 
 "coc
 let g:coc_start_at_startup = 0

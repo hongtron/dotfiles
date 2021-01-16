@@ -1,6 +1,12 @@
 set nocompatible
 syntax on
 
+" Leader key
+" " remove default mapping of space to move right
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+let maplocalleader=" "
+
 call plug#begin('~/.config/nvim/plugged')
 
 Plug '~/.config/nvim/local-plugins/color-schemes'

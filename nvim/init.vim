@@ -135,12 +135,12 @@ let g:VimuxUseNearestPane = 1
 " vim-test
 let test#strategy = "vimux"
 
-function! ClearTransform(cmd) abort
-  return 'clear; ' . a:cmd
-endfunction
-
-let g:test#custom_transformations = {'clear': function('ClearTransform')}
-let g:test#transformation = 'clear'
+" function! ClearTransform(cmd) abort
+"   return 'clear; ' . a:cmd
+" endfunction
+"
+" let g:test#custom_transformations = {'clear': function('ClearTransform')}
+" let g:test#transformation = 'clear'
 
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "40"

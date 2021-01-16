@@ -177,17 +177,17 @@ nnoremap <silent> <Leader>cw :Trim<CR>
 imap <C-L> <SPACE>=><SPACE>
 imap <C-E>= <lt>%=  %><esc>hhi
 imap <C-E>- <lt>%  %><esc>hhi
-map <silent> <LocalLeader>rt :!ctags -R --exclude=".git" --exclude="node_modules" --exclude="vendor" --exclude="log" --exclude="tmp" --exclude="db" --exclude="pkg" --exclude="deps" --exclude="_build" --extra=+f .<CR>
-map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
-map <silent> <LocalLeader>nf :NERDTreeFind<CR>
+map <silent> <leader>rt :!ctags -R --exclude=".git" --exclude="node_modules" --exclude="vendor" --exclude="log" --exclude="tmp" --exclude="db" --exclude="pkg" --exclude="deps" --exclude="_build" --extra=+f .<CR>
+map <silent> <leader>nt :NERDTreeToggle<CR>
+map <silent> <leader>nf :NERDTreeFind<CR>
 map <silent> <leader>ff :SmartFuzzy<CR>
 map <silent> <leader>fg :GFiles<CR>
 map <silent> <leader>fb :Buffers<CR>
 map <silent> <leader>ft :Tags<CR>
-map <silent> <LocalLeader>nh :nohls<CR>
-map <silent> <LocalLeader>cc :TComment<CR>
+map <silent> <leader>nh :nohls<CR>
+map <silent> <leader>cc :TComment<CR>
 
-nnoremap <LocalLeader>p :set paste!<CR>
+nnoremap <leader>p :set paste!<CR>
 nnoremap <silent> k gk
 nnoremap <silent> j gj
 nnoremap <silent> Y y$

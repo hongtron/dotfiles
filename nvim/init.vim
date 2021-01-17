@@ -76,6 +76,9 @@ set wildignore+=*.pyc,*.o,*.class
 set wrap
 set noshowcmd
 
+" Neovim
+set inccommand=nosplit " highlight current results during substitution
+
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 autocmd BufNewFile,BufReadPost *.go set filetype=go
 autocmd BufnewFile,BufRead *.slim setlocal filetype=slim

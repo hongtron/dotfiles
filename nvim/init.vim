@@ -51,7 +51,6 @@ Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/matchit.zip'
 Plug 'w0rp/ale'
-Plug 'wlangstroth/vim-racket'
 
 call plug#end()
 

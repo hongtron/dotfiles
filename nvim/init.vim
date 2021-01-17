@@ -22,6 +22,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 Plug 'godlygeek/tabular'
+Plug 'itchyny/lightline.vim'
 Plug 'janko-m/vim-test'
 Plug 'jlanzarotta/bufexplorer', { 'commit': 'f3bbe12664b08038912faac586f6c0b5104325c3' }
 Plug 'jtratner/vim-flavored-markdown'
@@ -31,7 +32,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-" requires nodejs, neovim python package (pynvim)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'pgr0ss/vim-github-url'
@@ -196,9 +196,14 @@ nnoremap <silent> k gk
 nnoremap <silent> j gj
 nnoremap <silent> Y y$
 
+" Appearance
 if &t_Co == 256
   colorscheme jellybeans
+  let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ }
 endif
+
 
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
@@ -206,18 +211,7 @@ autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
-set laststatus=2
-
-set statusline=
-set statusline+=%<\                       " cut at start
-set statusline+=%2*[%n%H%M%R%W]%*\        " buffer number, and flags
-set statusline+=%-40f\                    " relative path
-
-set statusline+=%=                        " seperate between right- and left-aligned
-set statusline+=%1*%y%*%*\                " file type
-set statusline+=%10(L(%l/%L)%)\           " line
-set statusline+=%2(C(%v/125)%)\           " column
-set statusline+=%P                        " percentage of file
+set laststatus=2 " always show statusline
 
 set undodir=~/.config/nvim/undodir
 set undofile

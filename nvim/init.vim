@@ -55,6 +55,8 @@ Plug 'wlangstroth/vim-racket'
 
 call plug#end()
 
+setglobal visualbell
+
 set cursorline
 set background=dark
 set backspace=indent,eol,start

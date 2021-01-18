@@ -192,8 +192,11 @@ map <silent> <leader>nh :nohls<CR>
 map <silent> <leader>cc :TComment<CR>
 
 nnoremap <leader>p :set paste!<CR>
+
+" use j/k more intutively when lines are wrapped
 nnoremap <silent> k gk
 nnoremap <silent> j gj
+
 nnoremap <silent> Y y$
 
 " Appearance

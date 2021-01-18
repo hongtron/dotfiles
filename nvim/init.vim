@@ -104,21 +104,56 @@ autocmd FileType ruby,elm,yml,javscript,json,go,md,slim,css,scss,js,vim autocmd 
 let html_use_css=1
 let html_number_lines=0
 let html_no_pre=1
+let g:no_html_toolbar = 'yes'
+let g:rubycomplete_buffer_loading = 1
+let g:go_highlight_trailing_whitespace_error = 0
 
 " tmuxline
 let g:tmuxline_powerline_separators = 0
 
-let g:rubycomplete_buffer_loading = 1
-
-let g:no_html_toolbar = 'yes'
-
-let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$']
-
 " fugitive
-"
 " automatically open quickfix menu after grep to see results
 autocmd QuickFixCmdPost *grep* cwindow
 map <silent> <leader>gw :Ggrep <cword><CR>
+
+" Vimux
+let g:VimuxUseNearestPane = 1
+let g:VimuxOrientation = "h"
+let g:VimuxHeight = "40"
+
+" vim-test
+let test#strategy = "vimux"
+" function! ClearTransform(cmd) abort
+"   return 'clear; ' . a:cmd
+" endfunction
+" let g:test#custom_transformations = {'clear': function('ClearTransform')}
+" let g:test#transformation = 'clear'
+
+" ale
+set omnifunc=ale#completion#OmniFunc
+autocmd CompleteDone * pclose " close the preview window after selecting completion
+let g:ale_lint_on_text_changed = "normal"
+let g:ale_lint_on_insert_leave = 1
+let g:ale_linters = {'java': []}
+nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
+nmap <silent> <leader>an <Plug>(ale_next_wrap)
+nmap <silent> <leader>gd :ALEGoToDefinition<CR>
+
+" CoC
+" let g:coc_start_at_startup = 0
+" autocmd FileType java :CocStart
+" autocmd FileType rust :CocStart
+
+" vim-test
+nnoremap <silent> <leader>rf :wa<CR>:TestNearest<CR>
+nnoremap <silent> <leader>rb :wa<CR>:TestFile<CR>
+nnoremap <silent> <leader>ra :wa<CR>:TestSuite<CR>
+nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
+
+" NERDTree
+let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$']
+map <silent> <leader>nt :NERDTreeToggle<CR>
+map <silent> <leader>nf :NERDTreeFind<CR>
 
 " fzf
 let $FZF_DEFAULT_COMMAND = 'find * -type f 2>/dev/null | grep -v -E "deps\/|_build\/|node_modules\/|vendor\/|build_intellij\/"'
@@ -134,44 +169,10 @@ function! SmartFuzzy()
   endif
 endfunction
 command! -nargs=* SmartFuzzy :call SmartFuzzy()
-
-" Vimux
-let g:VimuxUseNearestPane = 1
-
-" vim-test
-let test#strategy = "vimux"
-
-" function! ClearTransform(cmd) abort
-"   return 'clear; ' . a:cmd
-" endfunction
-"
-" let g:test#custom_transformations = {'clear': function('ClearTransform')}
-" let g:test#transformation = 'clear'
-
-let g:VimuxOrientation = "h"
-let g:VimuxHeight = "40"
-
-let g:go_highlight_trailing_whitespace_error = 0
-
-" ale
-set omnifunc=ale#completion#OmniFunc
-autocmd CompleteDone * pclose " close the preview window after selecting completion
-let g:ale_lint_on_text_changed = "normal"
-let g:ale_lint_on_insert_leave = 1
-let g:ale_linters = {'java': []}
-nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
-nmap <silent> <leader>an <Plug>(ale_next_wrap)
-nmap <silent> <leader>gd :ALEGoToDefinition<CR>
-
-"coc
-let g:coc_start_at_startup = 0
-autocmd FileType java :CocStart
-autocmd FileType rust :CocStart
-
-nnoremap <silent> <leader>rf :wa<CR>:TestNearest<CR>
-nnoremap <silent> <leader>rb :wa<CR>:TestFile<CR>
-nnoremap <silent> <leader>ra :wa<CR>:TestSuite<CR>
-nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
+map <silent> <leader>ff :SmartFuzzy<CR>
+map <silent> <leader>fg :GFiles<CR>
+map <silent> <leader>fb :Buffers<CR>
+map <silent> <leader>ft :Tags<CR>
 
 function! Trim()
   %s/\s*$//
@@ -184,12 +185,6 @@ imap <C-L> <SPACE>=><SPACE>
 imap <C-E>= <lt>%=  %><esc>hhi
 imap <C-E>- <lt>%  %><esc>hhi
 map <silent> <leader>rt :!ctags -R --exclude=".git" --exclude="node_modules" --exclude="vendor" --exclude="log" --exclude="tmp" --exclude="db" --exclude="pkg" --exclude="deps" --exclude="_build" --extra=+f .<CR>
-map <silent> <leader>nt :NERDTreeToggle<CR>
-map <silent> <leader>nf :NERDTreeFind<CR>
-map <silent> <leader>ff :SmartFuzzy<CR>
-map <silent> <leader>fg :GFiles<CR>
-map <silent> <leader>fb :Buffers<CR>
-map <silent> <leader>ft :Tags<CR>
 map <silent> <leader>nh :nohls<CR>
 map <silent> <leader>cc :TComment<CR>
 

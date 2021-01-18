@@ -56,7 +56,10 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
+" Disable bell
+" https://unix.stackexchange.com/a/5313
 setglobal visualbell
+setglobal t_vb=
 
 set cursorline
 set background=dark

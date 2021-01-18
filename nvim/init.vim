@@ -9,47 +9,49 @@ let maplocalleader=" "
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Local
 Plug '~/.config/nvim/local-plugins/color-schemes'
 Plug '~/.config/nvim/local-plugins/language-mappings'
 
-Plug 'benmills/vimux'
-Plug 'bkad/CamelCaseMotion'
+" Language/Filetype Specific
 Plug 'cespare/vim-toml'
-Plug 'dansomething/coc-java-debug', {'do': 'yarn install --frozen-lockfile'}
-Plug 'edkolev/tmuxline.vim', {'commit': '05c687014272abca548d72cfd5d8a7b7c3fb7e5e'}
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elixir-lang/vim-elixir'
-Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+Plug 'pangloss/vim-javascript'
+Plug 'rodjek/vim-puppet'
+Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-rails'
+Plug 'vim-erlang/vim-erlang-runtime'
+Plug 'vim-ruby/vim-ruby'
+
+" CoC
+" Plug 'dansomething/coc-java-debug', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'benmills/vimux'
+Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'janko-m/vim-test'
-Plug 'jlanzarotta/bufexplorer', { 'commit': 'f3bbe12664b08038912faac586f6c0b5104325c3' }
+Plug 'jlanzarotta/bufexplorer'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pangloss/vim-javascript'
 Plug 'pgr0ss/vim-github-url'
-Plug 'rodjek/vim-puppet'
-Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-erlang/vim-erlang-runtime'
-Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/matchit.zip'
 Plug 'w0rp/ale'
 
 call plug#end()

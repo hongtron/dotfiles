@@ -117,6 +117,10 @@ let g:tmuxline_powerline_separators = 0
 " fugitive
 " automatically open quickfix menu after grep to see results
 autocmd QuickFixCmdPost *grep* cwindow
+" reminder: gq to close blame window
+map <silent> <leader>gb :Gblame<CR>
+map <silent> <leader>gc :Gcommit<CR>
+map <silent> <leader>gd :Gdiffsplit<CR>
 map <silent> <leader>gw :Ggrep <cword><CR>
 
 " Vimux
@@ -140,7 +144,7 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_linters = {'java': []}
 nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
 nmap <silent> <leader>an <Plug>(ale_next_wrap)
-nmap <silent> <leader>gd :ALEGoToDefinition<CR>
+nmap <silent> <leader>gtd :ALEGoToDefinition<CR>
 
 " CoC
 " let g:coc_start_at_startup = 0

@@ -2,5 +2,5 @@
 *.swp
 .netrwhist
 tags
-/nvim/plugged
-/nvim/undodir
+/neovim/dot-config/nvim/plugged
+/neovim/dot-config/nvim/undodir

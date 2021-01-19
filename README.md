@@ -1,7 +1,7 @@
 ## ali's dotfiles
 
 ## Install
-`make link-all`
+`make install`
 
 ## Uninstall
 

@@ -1,6 +1,6 @@
 SHELL = /bin/bash
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-PATH := $(DOTFILES_DIR)/bin:$(PATH)
+PATH := $(DOTFILES_DIR)/scripts/dot-bin:$(PATH)
 
 PACKAGES = $(shell find $(DOTFILES_DIR) \
 	! -path $(DOTFILES_DIR) ! -path $(DOTFILES_DIR)/.git \

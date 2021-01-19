@@ -43,7 +43,7 @@ Plug 'jtratner/vim-flavored-markdown'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'pgr0ss/vim-github-url'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -161,6 +161,10 @@ nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
 let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$']
 map <silent> <leader>nt :NERDTreeToggle<CR>
 map <silent> <leader>nf :NERDTreeFind<CR>
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 
 " fzf
 let $FZF_DEFAULT_COMMAND = 'find * -type f 2>/dev/null | grep -v -E "deps\/|_build\/|node_modules\/|vendor\/|build_intellij\/"'

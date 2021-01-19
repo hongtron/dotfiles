@@ -21,10 +21,10 @@ link-all: stow-$(OS) $(addprefix link-,$(PACKAGES))
 unlink-all: stow-$(OS) $(addprefix unlink-,$(PACKAGES))
 
 $(addprefix link-,$(PACKAGES)): stow-$(OS)
-	stow --dotfiles $(@:link-%=%)
+	stow --target $(HOME) --dotfiles $(@:link-%=%)
 
 $(addprefix unlink-,$(PACKAGES)): stow-$(OS)
-	stow --delete --dotfiles $(@:unlink-%=%)
+	stow --target $(HOME) --delete --dotfiles $(@:unlink-%=%)
 
 setup-devenv: compose_path = /usr/local/etc/devenv
 setup-devenv:

@@ -1,1 +1,1 @@
-map <LocalLeader>pd Oimport pdb; pdb.set_trace()<ESC>
+map <LocalLeader>pd O__import__("pdb").set_trace()<ESC>

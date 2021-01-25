@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Flash my Atreus keyboard.
+
+set -eu -o pipefail
+
+usage() {
+  cat <<EOF
+flatreus [PATH TO JSON KEYMAP]
+Options
+  -h, --help      This help text.
+EOF
+}
+
+while [[ $# > 0 && $1 == -* ]]; do
+  case $1 in
+    -h|--help)
+      usage
+      exit
+      ;;
+  esac
+
+  shift
+done
+
+# TODO: brew install qmk/qmk/qmk when it's supported on apple silicon
+if ! command -v qmk &> /dev/null ; then
+  cat <<EOF
+  qmk could not be found.
+
+  install via:
+  $ brew tap homebrew/cask-drivers
+  $ brew install --cask qmk-toolbox
+EOF
+fi
+
+qmk compile $1
+qmk flash -kb keyboardio/atreus -km $(basename $1 .json)

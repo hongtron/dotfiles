@@ -122,6 +122,7 @@ map <silent> <leader>gb :Gblame<CR>
 map <silent> <leader>gc :Gcommit<CR>
 map <silent> <leader>gd :Gdiffsplit<CR>
 map <silent> <leader>gw :Ggrep <cword><CR>
+map <silent> <leader>gW :Ggrep -i <cword><CR>
 
 " Vimux
 let g:VimuxUseNearestPane = 1
@@ -144,6 +145,8 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_linters = {'java': []}
 nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
 nmap <silent> <leader>an <Plug>(ale_next_wrap)
+nmap <silent> <leader>afr :ALEFindReferences<CR>
+xnoremap <silent> <leader>aca :ALECodeAction<CR>
 nmap <silent> <leader>gtd :ALEGoToDefinition<CR>
 
 " CoC
@@ -158,7 +161,7 @@ nnoremap <silent> <leader>ra :wa<CR>:TestSuite<CR>
 nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
 
 " NERDTree
-let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$']
+let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$', '__pycache__']
 map <silent> <leader>nt :NERDTreeToggle<CR>
 map <silent> <leader>nf :NERDTreeFind<CR>
 " Start NERDTree when Vim starts with a directory argument.

@@ -50,3 +50,5 @@
 	name = ali
 [grep]
 	lineNumber = true
+[pull]
+	ff = only

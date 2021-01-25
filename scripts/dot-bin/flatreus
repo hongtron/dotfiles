@@ -2,7 +2,7 @@
 
 # Flash my Atreus keyboard.
 
-set -eu -o pipefail
+set -eux -o pipefail
 
 usage() {
   cat <<EOF

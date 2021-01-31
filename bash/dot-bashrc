@@ -143,3 +143,4 @@ safepathprepend $HOME/.bin.local
 
 
 safesource $HOME/.fzf.bash
+safesource $HOME/.cargo/env

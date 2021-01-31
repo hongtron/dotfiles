@@ -65,6 +65,6 @@ safepathprepend $HOME/.bin
 ## Local (LOCAL)
 safepathprepend $HOME/.bin.local
 
-#Common Tools
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Tools
+safesource ~/.fzf.zsh
+safesource "$HOME/.cargo/env"

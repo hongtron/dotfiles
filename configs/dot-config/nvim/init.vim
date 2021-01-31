@@ -26,12 +26,12 @@ Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-ruby/vim-ruby'
 
 " CoC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'dansomething/coc-java-debug', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
@@ -150,9 +150,9 @@ xnoremap <silent> <leader>aca :ALECodeAction<CR>
 nmap <silent> <leader>gtd :ALEGoToDefinition<CR>
 
 " CoC
-" let g:coc_start_at_startup = 0
+let g:coc_start_at_startup = 0
 " autocmd FileType java :CocStart
-" autocmd FileType rust :CocStart
+autocmd FileType rust :CocStart
 
 " vim-test
 nnoremap <silent> <leader>rf :wa<CR>:TestNearest<CR>

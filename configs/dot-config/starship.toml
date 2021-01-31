@@ -7,6 +7,10 @@ format = '[\[${ram}\]]($style) '
 threshold = -1
 style = "bold dimmed purple"
 
+[shlvl]
+disabled = false
+threshold = 3 # already at 2 in tmux
+
 [git_status]
 format = '([\[$staged$modified$untracked$conflicted$stashed$deleted$renamed$ahead_behind\]]($style) )'
 staged = '[\($count\)](green bold)'

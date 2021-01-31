@@ -24,3 +24,9 @@ ahead = "[⇡${count}](white bold)"
 diverged = "[⇕⇡${ahead_count}⇣${behind_count}](white bold)"
 behind = "[⇣${count}](white bold)"
 style = "bold purple"
+
+[ruby]
+format = '[(\(ruby $version\) )](white dimmed bold)'
+
+[python]
+format = '[(\(python $version\) )](white dimmed bold)'

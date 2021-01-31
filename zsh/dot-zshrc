@@ -36,12 +36,16 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 export EDITOR=vim
 export LESS='XFR'
 
-if [[ "$platform" == "osx" ]]; then
-  PROMPT='%{$fg_bold[green]%}%m: %{$fg_bold[magenta]%}[%{$(free)]%} %{$fg_bold[blue]%}%~%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%} %#
-→ '
+if type starship > /dev/null; then
+  eval "$(starship init zsh)"
 else
-  PROMPT='%{$fg_bold[green]%}%m: %{$fg_bold[magenta]%}%{$fg_bold[blue]%}%~%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%} %#
-→ '
+  if [[ "$platform" == "osx" ]]; then
+    PROMPT='%{$fg_bold[green]%}%m: %{$fg_bold[magenta]%}[%{$(free)]%} %{$fg_bold[blue]%}%~%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%} %#
+  → '
+  else
+    PROMPT='%{$fg_bold[green]%}%m: %{$fg_bold[magenta]%}%{$fg_bold[blue]%}%~%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%} %#
+  → '
+  fi
 fi
 
 # ZSH Settings (LOCAL)

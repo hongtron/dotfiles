@@ -1,0 +1,22 @@
+[directory]
+truncate_to_repo = false
+
+[memory_usage]
+disabled = false
+format = '[\[${ram}\]]($style) '
+threshold = -1
+style = "bold dimmed purple"
+
+[git_status]
+format = '([\[$staged$modified$untracked$conflicted$stashed$deleted$renamed$ahead_behind\]]($style) )'
+staged = '[\($count\)](green bold)'
+modified = '[\($count\)](red bold)'
+untracked = '[\($count\)](yellow bold)'
+conflicted = '[\(conflicts: $count\)](green bold)'
+stashed = '[\(stash\)](yellow bold)'
+deleted = '[ ✘$count ](red bold)'
+renamed = '[ »$count ](yellow bold)'
+ahead = "[⇡${count}](white bold)"
+diverged = "[⇕⇡${ahead_count}⇣${behind_count}](white bold)"
+behind = "[⇣${count}](white bold)"
+style = "bold purple"

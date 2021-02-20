@@ -5,3 +5,4 @@ tags
 /configs/dot-config/nvim/plugged
 /configs/dot-config/nvim/undodir
 /configs/dot-config/coc
+/configs/dot-config/iterm2

@@ -68,3 +68,4 @@ safepathprepend $HOME/.bin.local
 # Tools
 safesource ~/.fzf.zsh
 safesource "$HOME/.cargo/env"
+safesource /opt/homebrew/opt/asdf/asdf.sh

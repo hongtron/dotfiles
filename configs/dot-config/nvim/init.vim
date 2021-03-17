@@ -30,11 +30,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
-"
 " Plug 'dansomething/coc-java-debug', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+if filereadable(expand('~/.config/nvim/coc.vim'))
+  source ~/.config/nvim/coc.vim
+endif
 
 Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
@@ -146,42 +148,6 @@ let g:ale_lint_on_insert_leave = 1
 nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
 nmap <silent> <leader>an <Plug>(ale_next_wrap)
 let g:ale_disable_lsp = 1
-
-" CoC
-let g:coc_start_at_startup = 0
-autocmd FileType python :CocStart
-" autocmd FileType java :CocStart
-autocmd FileType rust :CocStart
-nmap <silent> <leader>gtd <Plug>(coc-definition)
-nmap <silent> <leader>gtt <Plug>(coc-type-definition)
-nmap <silent> <leader>gti <Plug>(coc-implementation)
-nmap <silent> <leader>fr <Plug>(coc-references)
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>ca <Plug>(coc-codeaction)
-nmap <leader>ca <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-" Completion
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-command! -nargs=0 Format :call CocAction('format')
 
 " vim-test
 nnoremap <silent> <leader>rf :wa<CR>:TestNearest<CR>

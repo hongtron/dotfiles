@@ -86,6 +86,9 @@ set wildignore+=*.pyc,*.o,*.class
 set wrap
 set noshowcmd
 
+" search for highlighted text with '//'
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 " Neovim
 set inccommand=nosplit " highlight current results during substitution
 

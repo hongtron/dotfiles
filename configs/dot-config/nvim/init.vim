@@ -131,6 +131,7 @@ map <silent> <leader>gW :Ggrep -i <cword><CR>
 let g:VimuxUseNearestPane = 1
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "40"
+nnoremap <silent> <leader>vc :wa<CR>:VimuxRunLastCommand<CR>
 
 " vim-test
 let test#strategy = "vimux"
@@ -147,9 +148,6 @@ let g:ale_lint_on_text_changed = "normal"
 let g:ale_lint_on_insert_leave = 1
 nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
 nmap <silent> <leader>an <Plug>(ale_next_wrap)
-" nmap <silent> <leader>afr :ALEFindReferences<CR>
-" xnoremap <silent> <leader>aca :ALECodeAction<CR>
-" nmap <silent> <leader>gtd :ALEGoToDefinition<CR>
 let g:ale_disable_lsp = 1
 
 " CoC
@@ -163,8 +161,8 @@ nmap <silent> <leader>gti <Plug>(coc-implementation)
 nmap <silent> <leader>fr <Plug>(coc-references)
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>ca  <Plug>(coc-codeaction-selected)
-nmap <leader>ca  <Plug>(coc-codeaction-selected)
+xmap <leader>ca <Plug>(coc-codeaction)
+nmap <leader>ca <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 " Symbol renaming.

@@ -6,3 +6,5 @@ tags
 /configs/dot-config/nvim/undodir
 /configs/dot-config/coc
 /configs/dot-config/iterm2
+/configs/dot-config/gitui
+/configs/dot-config/htop

@@ -89,9 +89,7 @@ set inccommand=nosplit " highlight current results during substitution
 
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 autocmd BufNewFile,BufReadPost *.go set filetype=go
-autocmd BufnewFile,BufRead *.slim setlocal filetype=slim
 autocmd FileType elixir setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType elm setlocal expandtab
 autocmd FileType gitcommit set tw=72
 autocmd FileType go setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
@@ -99,13 +97,12 @@ autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 nospell
 autocmd FileType md setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType ruby runtime ruby_mappings.vim
 autocmd FileType yml setlocal filetype=yaml expandtab
 
 " Autoremove trailing spaces when saving the buffer
-autocmd FileType ruby,elm,yml,javscript,json,go,md,slim,css,scss,js,vim autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType ruby,yml,javascript,json,go,md,js,vim autocmd BufWritePre <buffer> %s/\s\+$//e
 
 let html_use_css=1
 let html_number_lines=0

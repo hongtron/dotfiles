@@ -27,6 +27,7 @@ Plug 'vim-ruby/vim-ruby'
 
 " Neovim LSP
 Plug 'neovim/nvim-lspconfig'
+Plug 'nathunsmitty/nvim-ale-diagnostic'
 
 " CoC
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}

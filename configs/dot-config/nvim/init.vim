@@ -25,18 +25,21 @@ Plug 'tpope/vim-rails'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-ruby/vim-ruby'
 
+" Neovim LSP
+Plug 'neovim/nvim-lspconfig'
+
 " CoC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile && yarn build' }
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
-Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+" Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+" Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'dansomething/coc-java-debug', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-if filereadable(expand('~/.config/nvim/coc.vim'))
-  source ~/.config/nvim/coc.vim
-endif
+" if filereadable(expand('~/.config/nvim/coc.vim'))
+"   source ~/.config/nvim/coc.vim
+" endif
 
 Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
@@ -47,7 +50,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'liuchengxu/vim-which-key'
+" Plug 'liuchengxu/vim-which-key'
 Plug 'pgr0ss/vim-github-url'
 Plug 'preservim/nerdtree'
 Plug 'tomtom/tcomment_vim'
@@ -61,6 +64,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
 
 call plug#end()
+
+lua require('lsp')
 
 " Disable bell
 " https://unix.stackexchange.com/a/5313
@@ -120,7 +125,7 @@ let g:go_highlight_trailing_whitespace_error = 0
 " tmuxline
 let g:tmuxline_powerline_separators = 0
 
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+" nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " fugitive
 " automatically open quickfix menu after grep to see results

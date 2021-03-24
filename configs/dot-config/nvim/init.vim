@@ -47,6 +47,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vim-which-key'
 Plug 'pgr0ss/vim-github-url'
 Plug 'preservim/nerdtree'
 Plug 'tomtom/tcomment_vim'
@@ -118,6 +119,8 @@ let g:go_highlight_trailing_whitespace_error = 0
 
 " tmuxline
 let g:tmuxline_powerline_separators = 0
+
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " fugitive
 " automatically open quickfix menu after grep to see results

@@ -92,6 +92,7 @@ set textwidth=0 nosmartindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set wildignore+=*.pyc,*.o,*.class
 set wrap
 set noshowcmd
+set signcolumn=number
 
 " search for highlighted text with '//'
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>

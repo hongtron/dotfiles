@@ -32,7 +32,7 @@ setup-devenv:
 	[ -L $(compose_path)/docker-compose.yml ] && echo "devenv already configured" || \
 		ln -s $(DOTFILES_DIR)/docker-compose.yml $(compose_path)/docker-compose.yml
 
-setup-neovim: link-neovim
+setup-neovim:
 	is-executable nvim && nvim +PlugInstall +qall || echo "Neovim is not installed"
 
 stow-macos: brew

@@ -12,3 +12,12 @@ Metrics/AbcSize:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false

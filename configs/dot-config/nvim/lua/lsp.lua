@@ -95,8 +95,10 @@ cmp.setup.cmdline(':', {
   })
 })
 
+-- rust-tools
 local rt = require("rust-tools")
-
+-- i was already doing this, but this is validating:
+-- https://github.com/simrat39/rust-tools.nvim/issues/196
 rt.setup({
   server = {
     capabilties = require('cmp_nvim_lsp').default_capabilities(),

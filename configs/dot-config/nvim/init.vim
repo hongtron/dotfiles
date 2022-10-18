@@ -28,6 +28,10 @@ Plug 'vim-ruby/vim-ruby'
 " Neovim LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nathunsmitty/nvim-ale-diagnostic'
+Plug 'simrat39/rust-tools.nvim'
+" Debugging
+Plug 'nvim-lua/plenary.nvim'
+Plug 'mfussenegger/nvim-dap'
 
 " CoC
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}

@@ -49,7 +49,10 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'itchyny/lightline.vim'
 Plug 'janko-m/vim-test'
 Plug 'jlanzarotta/bufexplorer'
@@ -70,6 +73,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
 
 call plug#end()
+
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to select one from the menu
+set completeopt=menuone,noselect,noinsert
 
 lua require('lsp')
 
@@ -99,36 +107,6 @@ set wrap
 set noshowcmd
 set signcolumn=number
 
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:false
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
-
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.nvim_lua = v:true
-let g:compe.source.vsnip = v:false
-
-set completeopt=menuone,noselect
-
-inoremap <silent><expr> <C-Space> compe#complete()
-" for compatibility with vim-endwise
-inoremap <silent><expr> <CR> compe#confirm({ 'keys': "\n\<Plug>DiscretionaryEnd", 'mode': 'i' })
-inoremap <silent><expr> <C-e> compe#close('<C-e>')
-inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })
 
 " search for highlighted text with '//'
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>

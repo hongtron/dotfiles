@@ -55,7 +55,7 @@ vim.lsp.diagnostic.on_publish_diagnostics, {
 -- Completion
 local cmp = require("cmp")
 cmp.setup({
-  completion = { autocomplete = false },
+  -- completion = { autocomplete = false },
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
@@ -71,6 +71,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'vsnip' },
   }, {
     { name = 'buffer' },

@@ -16,6 +16,9 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
 Naming/MethodParameterName:
   Enabled: false
 

@@ -46,14 +46,17 @@ Plug 'mfussenegger/nvim-dap'
 "   source ~/.config/nvim/coc.vim
 " endif
 
+Plug 'anuvyklack/hydra.nvim'
 Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'itchyny/lightline.vim'
+Plug 'jbyuki/venn.nvim'
 Plug 'janko-m/vim-test'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'jtratner/vim-flavored-markdown'
@@ -80,6 +83,7 @@ call plug#end()
 set completeopt=menuone,noselect,noinsert
 
 lua require('lsp')
+lua require('drawing')
 
 " Disable bell
 " https://unix.stackexchange.com/a/5313
@@ -147,8 +151,8 @@ let g:tmuxline_powerline_separators = 0
 " automatically open quickfix menu after grep to see results
 autocmd QuickFixCmdPost *grep* cwindow
 " reminder: gq to close blame window
-map <silent> <leader>gb :Gblame<CR>
-map <silent> <leader>gc :Gcommit<CR>
+map <silent> <leader>gb :Git blame<CR>
+map <silent> <leader>gc :Git commit<CR>
 map <silent> <leader>gd :Gdiffsplit<CR>
 map <silent> <leader>gw :Ggrep <cword><CR>
 map <silent> <leader>gW :Ggrep -i <cword><CR>

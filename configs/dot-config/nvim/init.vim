@@ -46,7 +46,6 @@ Plug 'mfussenegger/nvim-dap'
 "   source ~/.config/nvim/coc.vim
 " endif
 
-Plug 'anuvyklack/hydra.nvim'
 Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
 Plug 'folke/which-key.nvim'

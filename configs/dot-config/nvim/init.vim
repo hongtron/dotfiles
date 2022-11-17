@@ -33,19 +33,6 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'mfussenegger/nvim-dap'
 
-" CoC
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile && yarn build' }
-" Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
-" Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'dansomething/coc-java-debug', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-" if filereadable(expand('~/.config/nvim/coc.vim'))
-"   source ~/.config/nvim/coc.vim
-" endif
-
 Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
 Plug 'folke/which-key.nvim'

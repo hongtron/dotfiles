@@ -1,4 +1,6 @@
 local nvim_lsp = require('lspconfig')
+local util = require('lspconfig/util')
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -37,7 +39,7 @@ end
 -- and map buffer local keybindings when the language server attaches
 
 -- skip rust-analyzer, as it is handled by rust-tools plugin
-local servers = { "jedi_language_server" }
+local servers = { "jedi_language_server", "gopls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end

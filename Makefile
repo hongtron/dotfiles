@@ -3,8 +3,8 @@ DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 PATH := $(DOTFILES_DIR)/scripts/dot-bin:$(PATH)
 
 PACKAGES = $(shell find $(DOTFILES_DIR) \
-	! -path $(DOTFILES_DIR) ! -path $(DOTFILES_DIR)/.git \
-	-maxdepth 1 -type d -exec basename {} +)
+	-maxdepth 1 -mindepth 1 -type d \
+	! -path $(DOTFILES_DIR)/.git -exec basename {} \;)
 
 .PHONY: $(PACKAGES)
 

@@ -14,7 +14,7 @@ else
 OS := linux
 endif
 
-install: link-all setup-neovim setup-devenv
+install: link-all setup-vim
 
 link-all: stow-$(OS) $(addprefix link-,$(PACKAGES))
 
@@ -26,14 +26,8 @@ $(addprefix link-,$(PACKAGES)): stow-$(OS)
 $(addprefix unlink-,$(PACKAGES)): stow-$(OS)
 	stow --target $(HOME) --delete --dotfiles $(@:unlink-%=%)
 
-setup-devenv: compose_path = /usr/local/etc/devenv
-setup-devenv:
-	[ -d $(compose_path) ] || mkdir $(compose_path)
-	[ -L $(compose_path)/docker-compose.yml ] && echo "devenv already configured" || \
-		ln -s $(DOTFILES_DIR)/docker-compose.yml $(compose_path)/docker-compose.yml
-
-setup-neovim:
-	is-executable nvim && nvim +PlugInstall +qall || echo "Neovim is not installed"
+setup-vim:
+	is-executable vim && vim +PlugInstall +qall || echo "Vim is not installed"
 
 stow-macos: brew
 	is-executable stow || brew install stow

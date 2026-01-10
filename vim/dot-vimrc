@@ -7,11 +7,11 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 let maplocalleader=" "
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.vim/plugged')
 
 " Local
-Plug '~/.config/nvim/local-plugins/color-schemes'
-Plug '~/.config/nvim/local-plugins/language-mappings'
+Plug '~/.vim/local-plugins/color-schemes'
+Plug '~/.vim/local-plugins/language-mappings'
 
 " Language/Filetype Specific
 Plug 'cespare/vim-toml'
@@ -25,25 +25,10 @@ Plug 'tpope/vim-rails'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-ruby/vim-ruby'
 
-" Neovim LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'nathunsmitty/nvim-ale-diagnostic'
-Plug 'simrat39/rust-tools.nvim'
-" Debugging
-Plug 'nvim-lua/plenary.nvim'
-Plug 'mfussenegger/nvim-dap'
-
 Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
-Plug 'folke/which-key.nvim'
 Plug 'godlygeek/tabular'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/vim-vsnip'
 Plug 'itchyny/lightline.vim'
-Plug 'jbyuki/venn.nvim'
 Plug 'janko-m/vim-test'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'jtratner/vim-flavored-markdown'
@@ -67,10 +52,6 @@ call plug#end()
 " noinsert: Do not insert text until a selection is made
 " noselect: Do not select, force user to select one from the menu
 set completeopt=menuone,noselect,noinsert
-
-lua require('lsp')
-lua require('drawing')
-lua require('mappings')
 
 " Disable bell
 " https://unix.stackexchange.com/a/5313
@@ -96,14 +77,15 @@ set textwidth=0 nosmartindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set wildignore+=*.pyc,*.o,*.class
 set wrap
 set noshowcmd
-set signcolumn=number
-
+if exists('&signcolumn')
+  set signcolumn=yes
+endif
+if exists('&inccommand')
+  set inccommand=nosplit " highlight current results during substitution
+endif
 
 " search for highlighted text with '//'
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
-" Neovim
-set inccommand=nosplit " highlight current results during substitution
 
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 autocmd BufNewFile,BufReadPost *.go set filetype=go
@@ -150,11 +132,6 @@ nnoremap <silent> <leader>vc :wa<CR>:VimuxRunLastCommand<CR>
 
 " vim-test
 let test#strategy = "vimux"
-" function! ClearTransform(cmd) abort
-"   return 'clear; ' . a:cmd
-" endfunction
-" let g:test#custom_transformations = {'clear': function('ClearTransform')}
-" let g:test#transformation = 'clear'
 
 " ale
 set omnifunc=ale#completion#OmniFunc
@@ -229,7 +206,6 @@ if &t_Co == 256
       \ }
 endif
 
-
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 
@@ -238,11 +214,11 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 set laststatus=2 " always show statusline
 
-set undodir=~/.config/nvim/undodir
+set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
-if filereadable(expand('~/.init.vim.local'))
-  source ~/.init.vim.local
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
 endif

@@ -48,9 +48,16 @@
 [user]
 	email = github@alihong.net
 	name = ali
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICNO6NNq8mYvoPXe/5aL73wE31r45Y5uNmekO36zJvCP
 [grep]
 	lineNumber = true
 [pull]
 	ff = only
 [fetch]
 	prune = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true

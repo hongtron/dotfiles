@@ -2,8 +2,7 @@
 *.swp
 .netrwhist
 tags
-/configs/dot-config/nvim/plugged
-/configs/dot-config/nvim/undodir
+vim/dot-vim/undodir/
 /configs/dot-config/coc
 /configs/dot-config/iterm2
 /configs/dot-config/gitui

@@ -4,7 +4,14 @@ PATH := $(DOTFILES_DIR)/scripts/dot-bin:$(PATH)
 STOW_VERSION ?= 2.4.1
 STOW_PREFIX ?= /usr/local
 
-PACKAGES = $(filter-out .git,$(patsubst %/,%,$(notdir $(wildcard $(DOTFILES_DIR)/*/))))
+override PACKAGES := $(shell \
+	for d in "$(DOTFILES_DIR)"/*; do \
+		[ -d "$$d" ] || continue; \
+		base=$$(basename "$$d"); \
+		[ "$$base" = ".git" ] && continue; \
+		printf '%s ' "$$base"; \
+	done \
+)
 
 .PHONY: $(PACKAGES) link-all unlink-all link-% unlink-%
 
@@ -25,6 +32,15 @@ link-%: stow-$(OS)
 
 unlink-%: stow-$(OS)
 	stow --target $(HOME) --delete --dotfiles $*
+
+link-bash: stow-$(OS)
+	@for f in .bashrc .bash_aliases; do \
+		target="$(HOME)/$$f"; \
+		if [ -e "$$target" ] && [ ! -L "$$target" ]; then \
+			mv "$$target" "$$target.bak.$$(date +%Y%m%d%H%M%S)"; \
+		fi; \
+	done; \
+	stow --target $(HOME) --dotfiles bash
 
 setup-vim:
 	@if is-executable vim; then \

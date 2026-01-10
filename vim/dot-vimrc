@@ -25,7 +25,9 @@ Plug 'tpope/vim-rails'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-ruby/vim-ruby'
 
-Plug 'benmills/vimux'
+if executable('tmux')
+  Plug 'benmills/vimux'
+endif
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
@@ -125,10 +127,12 @@ map <silent> <leader>gw :Ggrep <cword><CR>
 map <silent> <leader>gW :Ggrep -i <cword><CR>
 
 " Vimux
-let g:VimuxUseNearestPane = 1
-let g:VimuxOrientation = "h"
-let g:VimuxHeight = "40"
-nnoremap <silent> <leader>vc :wa<CR>:VimuxRunLastCommand<CR>
+if executable('tmux')
+  let g:VimuxUseNearestPane = 1
+  let g:VimuxOrientation = "h"
+  let g:VimuxHeight = "40"
+  nnoremap <silent> <leader>vc :wa<CR>:VimuxRunLastCommand<CR>
+endif
 
 " vim-test
 let test#strategy = "vimux"

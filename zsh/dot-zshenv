@@ -19,5 +19,6 @@ safesource() {
   fi
 }
 
-# Being extra cautious to get local bin executables in path
-safepathprepend "/usr/local/bin"
+# /usr/local/bin was the Intel Homebrew prefix (removed; now on /opt/homebrew).
+# Left disabled — re-enable if you install non-brew tools into /usr/local/bin.
+# safepathprepend "/usr/local/bin"
